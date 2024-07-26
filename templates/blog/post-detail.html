@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+{% load blog_extras %}
+{% block content %}
+
+<h2>{{post.title}} </h2>
+{% row %}
+  {% col %}
+    {% include "blog/post-byline.html" %}
+  {% endcol %}
+{% endrow %}
+
+{% row %}
+  {% col %}
+    {{post.content| safe}}   
+    <!-- use library like Bleach (https://bleach.readthedocs.io/en/latest/) to sanitize HTML output  -->
+  {% endcol %}
+{% endrow %}
+
+{% row %}
+    {% col %}
+        {% recent_posts post %}
+    {% endcol %}
+{% endrow %}
+
+{% endblock %}
